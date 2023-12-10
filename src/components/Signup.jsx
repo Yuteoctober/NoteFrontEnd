@@ -12,7 +12,11 @@ function Signin() {
     e.preventDefault();
     console.log(`Username: ${username} Password: ${password}`);
   
-    axios.post('https://notebackend-qr35.onrender.com/auth/register', {username, password })
+    axios.post('https://notebackend-qr35.onrender.com/auth/register', {username, password }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(result => {
         alert(result.data.message);
         navigate('/auth/login')

@@ -77,21 +77,35 @@ useEffect(() => {
   }
 
   const saveCardPositions = (cardId, position) => {
-    axios.put(`https://notebackend-qr35.onrender.com/card/saveCardPositions/${cardId}`, position)
+    axios.put(`https://notebackend-qr35.onrender.com/card/saveCardPositions/${cardId}`,position, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+
       .then(() => {
       })
       .catch(err => console.log(err));
   };
 
   const saveCheckListPositions = (checklistId, position) => {
-    axios.put(`https://notebackend-qr35.onrender.com/checklist/saveChecklistPositions/${checklistId}`, position)
+    axios.put(`https://notebackend-qr35.onrender.com/checklist/saveChecklistPositions/${checklistId}`, position, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(() => {
       })
       .catch(() => console.log());
   };
 
   const saveIsDone = (checklistId, isDone, number) => {
-    axios.put(`https://notebackend-qr35.onrender.com/checklist/isdone/${checklistId}`, { isDone, number })
+    axios.put(`https://notebackend-qr35.onrender.com/checklist/isdone/${checklistId}`, { isDone, number }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(() => {
 
       })
@@ -140,7 +154,11 @@ useEffect(() => {
         );
         console.log(newValue, field);
 
-        axios.put(`https://notebackend-qr35.onrender.com/card/card-edit/${id}`, { value: newValue, field })
+        axios.put(`https://notebackend-qr35.onrender.com/card/card-edit/${id}`, { value: newValue, field }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
             .then(() => {
             })
             .catch((error) => {
@@ -161,9 +179,13 @@ useEffect(() => {
             )
         );
   
-        axios.put(`http://localhost:8080/checklist/checklist-edit/${id}`, { value: newValue, field })
+        axios.put(`http://localhost:8080/checklist/checklist-edit/${id}`, { value: newValue, field }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
              .then(() => {
-                  // Optionally handle success
+                
             })
              .catch((error) => {
                  console.error('Error updating checklist', error);
@@ -200,7 +222,11 @@ useEffect(() => {
   function handlSelectAvatar(avatar) {
     const userId = window.localStorage.getItem('id');
 
-    axios.put(`http://localhost:8080/auth/avatar/${userId}`, { avatar })
+    axios.put(`http://localhost:8080/auth/avatar/${userId}`, { avatar }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
         .then((result) => {
             setAvatar(result.data.avatar);
             console.log(result.data.avatar);

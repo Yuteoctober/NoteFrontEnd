@@ -9,10 +9,15 @@ function Signin() {
   const navigate = useNavigate()
 
   axios.defaults.withCredentials = true;
-  function handleSubmit(e) {
 
+  function handleSubmit(e) {
     e.preventDefault();
-    axios.post('https://notebackend-qr35.onrender.com/auth/login', {username, password})
+
+    axios.post('https://notebackend-qr35.onrender.com/auth/login', { username, password }, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 
     .then(result =>  { 
       alert(result.data.message);

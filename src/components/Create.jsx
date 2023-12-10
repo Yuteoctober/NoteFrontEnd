@@ -22,7 +22,11 @@ function Create() {
       
         try {
           const updatedSubject = { ...subject, color: color }; 
-          axios.post('https://notebackend-qr35.onrender.com/card/create-card', updatedSubject);
+          axios.post('https://notebackend-qr35.onrender.com/card/create-card', updatedSubject, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
             alert('Card created');
             setCreateCardModel(false)
             setSubject({ ...subject, 
