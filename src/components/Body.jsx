@@ -314,7 +314,7 @@ useEffect(() => {
         {cardResult.map((card) => (
           <Draggable
           key={card._id}
-          cancel='.edit_name, .edit_description, .delete_card, .edit_pensil_div'
+          cancel='.edit_name, .edit_description, .delete_card, .edit_pensil_div, card_description_'
           axis="both"
           handle={'.card'}
           grid={[0.1, 0.1]}
@@ -377,7 +377,7 @@ useEffect(() => {
                 (
                 <>
                   <h1>{card.name}</h1>
-                  <p>{card.description}</p>
+                  <p className='card_description_'>{card.description}</p>
                 </>
               )}
               
@@ -402,7 +402,7 @@ useEffect(() => {
             <motion.div key={checklist._id} className="checklist_card" style={{ backgroundColor: checklist.color}}>
               <span><DateOnCard date={checklist.created} /></span>
               {deleteMode && (
-                <BsTrash3Fill className='delete_card' style={{ position: 'relative', left: '6.2rem', top: '4px', cursor: 'pointer'}} 
+                <BsTrash3Fill className='delete_card' style={{ position: 'absolute', right: '.8rem', top: '8px', cursor: 'pointer'}} 
                 onClick={() => handleDelete(checklist._id, 'checklist')}
                 />
               )}
@@ -411,13 +411,13 @@ useEffect(() => {
                 {!editModesChecklist[checklist._id]? 
                   (
                     <BsFillPencilFill className='edit_checklist'
-                      style={{position: 'relative', fontSize: '14px', left: '6.3rem', cursor: 'pointer'}}
+                      style={{position: 'absolute', fontSize: '14px', right: '.8rem', cursor: 'pointer'}}
                       onClick={() => setEditModesChecklist((prev) => ({ ...prev, [checklist._id]: true }))}/>
                   )
                   :
                   (
                     <BsCheckLg className='edit_checklist'
-                      style={{position: 'relative', fontSize: '14px', left: '6.3rem', cursor: 'pointer', animation: 'blink 2s ease-in-out infinite'}}
+                      style={{position: 'absolute', fontSize: '14px', right: '.8rem', cursor: 'pointer', animation: 'blink 2s ease-in-out infinite'}}
                       onClick={() => setEditModesChecklist((prev) => ({ ...prev, [checklist._id]: false}))}/>
                   )
                 }
