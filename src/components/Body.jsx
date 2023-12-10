@@ -336,7 +336,7 @@ useEffect(() => {
               </span>
 
               {deleteMode && (
-                <BsTrash3Fill className='delete_card' style={{ position: 'relative', left: '5.8rem', top: '3px', cursor: 'pointer'}} 
+                <BsTrash3Fill className='delete_card' style={{ position: 'relative', right: '-4.8rem', top: '3px', cursor: 'pointer'}} 
                   onClick={() => handleDelete(card._id, 'card')}
                 />
               )}

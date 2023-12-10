@@ -12,7 +12,7 @@
 .create_checklist_container {
     position: absolute;
     max-width: 600px;
-    min-height: 500px;
+    min-height: 490px;
     max-width: 550px;
     width: 90vw;
     height: 57%;
@@ -129,7 +129,7 @@
     position: relative;
     width: 60px;
     padding: 4px 6px;
-    top: 2.5rem;
+    top: 2rem;
     left: 50%;
     transform: translate(-50%);
     cursor: pointer;

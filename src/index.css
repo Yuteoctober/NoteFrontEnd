@@ -363,11 +363,10 @@
 
 .input_checklist_container .checkbox_text {
   position: relative;
-  font-size: 13px;
+  font-size: 12.5px;
   left: 5px;
   bottom: 2px;
   margin: 0 auto;
-  font-weight: 600;
   color: rgb(0, 0, 0);
   white-space: nowrap;
   overflow: hidden;
