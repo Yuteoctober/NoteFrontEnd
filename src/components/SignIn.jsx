@@ -45,7 +45,7 @@ function Signin() {
             />
             <button type="submit">Sign in</button>
             <p>
-              Don't have an account? <Link to='/auth/register'>Sign up</Link>
+              Do not have an account? <Link to='/auth/register'>Sign up</Link>
             </p>
           </div>
         </form>
