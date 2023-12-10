@@ -308,12 +308,13 @@ useEffect(() => {
         <h4>{currentDate}</h4>
       </div>
       <motion.div className="right_row" >
-        <div className='mynote'><span><BsCalendar3Week /></span><h4>My Notes</h4></div>
+        
         <div className="card_container">
+          <div className='mynote'><span><BsCalendar3Week /></span><h4>My Notes</h4></div>
         {cardResult.map((card) => (
           <Draggable
           key={card._id}
-          cancel='.edit_name, .edit_description, .delete_card'
+          cancel='.edit_name, .edit_description, .delete_card, .edit_pensil_div'
           axis="both"
           handle={'.card'}
           grid={[0.1, 0.1]}
@@ -345,12 +346,24 @@ useEffect(() => {
                   whileHover={{color:'grey'}}
                 >
                   {editModes[card._id]? 
-                    (<BsCheckLg style={{animation: 'blink 2s ease-in-out infinite'}} 
+                    (
+                    <div className='edit_pensil_div' 
                       onClick={() => 
-                      setEditModes((prev) => ({ ...prev, [card._id]: false}))} />)
-                  :
-                    (<BsFillPencilFill onClick={() => 
-                    setEditModes((prev) => ({ ...prev, [card._id]: true}))} />)
+                      setEditModes((prev) => ({ ...prev, [card._id]: false}))}
+                      style={{width: '20px', height: '20px'}}  
+                      >
+                      <BsCheckLg className='edit_card_' style={{animation: 'blink 2s ease-in-out infinite'}} />
+                    </div>
+                    )
+                    :
+                    (
+                    <div className='edit_pensil_div' style={{width: '20px', height: '20px'}} 
+                      onClick={() => 
+                      setEditModes((prev) => ({ ...prev, [card._id]: true}))}
+                    >
+                      <BsFillPencilFill />
+                    </div>
+                    )
                   }
                 </motion.div>
               )}
@@ -389,7 +402,7 @@ useEffect(() => {
             <motion.div key={checklist._id} className="checklist_card" style={{ backgroundColor: checklist.color}}>
               <span><DateOnCard date={checklist.created} /></span>
               {deleteMode && (
-                <BsTrash3Fill className='delete_card' style={{ position: 'relative', left: '6.5rem', top: '4px', cursor: 'pointer'}} 
+                <BsTrash3Fill className='delete_card' style={{ position: 'relative', left: '6.2rem', top: '4px', cursor: 'pointer'}} 
                 onClick={() => handleDelete(checklist._id, 'checklist')}
                 />
               )}
@@ -398,13 +411,13 @@ useEffect(() => {
                 {!editModesChecklist[checklist._id]? 
                   (
                     <BsFillPencilFill className='edit_checklist'
-                      style={{position: 'relative', fontSize: '14px', left: '6.5rem', cursor: 'pointer'}}
+                      style={{position: 'relative', fontSize: '14px', left: '6.3rem', cursor: 'pointer'}}
                       onClick={() => setEditModesChecklist((prev) => ({ ...prev, [checklist._id]: true }))}/>
                   )
                   :
                   (
                     <BsCheckLg className='edit_checklist'
-                      style={{position: 'relative', fontSize: '14px', left: '6.5rem', cursor: 'pointer', animation: 'blink 2s ease-in-out infinite'}}
+                      style={{position: 'relative', fontSize: '14px', left: '6.3rem', cursor: 'pointer', animation: 'blink 2s ease-in-out infinite'}}
                       onClick={() => setEditModesChecklist((prev) => ({ ...prev, [checklist._id]: false}))}/>
                   )
                 }

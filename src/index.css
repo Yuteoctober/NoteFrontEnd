@@ -228,7 +228,7 @@
 
 .edit_card {
   position: absolute;
-  right: .8rem;
+  right: .4rem;
   top: .9rem;
   font-size: 14px;
   cursor: pointer;
@@ -303,11 +303,10 @@
 .mynote {
   display: flex;
   position: absolute;
-  margin-left: 1.2rem;
-  width: 120px;
-  align-items: center;
+  width: fit-content;
+  left: 1rem;
   gap: 10px;
-  z-index: 2;
+  align-items: center;
 }
 
 .mynote span {
@@ -435,9 +434,9 @@
   }
   .logo h2 {
     margin-top: 1.5rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 2.58rem;
     padding: 0;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
   }
   .btn_container div {
@@ -453,12 +452,12 @@
   .profile {
     position: absolute;
     top: -2.3rem;
-    right: 9.3rem;
+    right: 9.35rem;
   }
   .profile_container button {
-    left: .3rem;
+    left: .45rem;
     padding: 4px;
-    width: 50px;
+    width: 45px;
     font-size: 12px;
   }
   .top_right_row h1 {
