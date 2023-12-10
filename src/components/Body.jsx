@@ -287,7 +287,7 @@ useEffect(() => {
               )
               :
               (null)}
-              <span>{getUsername}</span>
+              <span style={{ color: '#fcf4f4'}} >{getUsername}</span>
               {window.localStorage.length? (
                 <button 
                   onClick={handleLogout}
@@ -314,7 +314,7 @@ useEffect(() => {
         {cardResult.map((card) => (
           <Draggable
           key={card._id}
-          cancel='.edit_name, .edit_description, .delete_card, .edit_pensil_div, card_description_'
+          cancel='.edit_name, .edit_description, .delete_card, .edit_pensil_div, .card_description_'
           axis="both"
           handle={'.card'}
           grid={[0.1, 0.1]}
@@ -336,7 +336,7 @@ useEffect(() => {
               </span>
 
               {deleteMode && (
-                <BsTrash3Fill className='delete_card' style={{ position: 'relative', right: '-4.8rem', top: '3px', cursor: 'pointer'}} 
+                <BsTrash3Fill className='delete_card' style={{ position: 'relative', right: '-5.1rem', top: '3px', cursor: 'pointer'}} 
                   onClick={() => handleDelete(card._id, 'card')}
                 />
               )}
@@ -357,7 +357,7 @@ useEffect(() => {
                     )
                     :
                     (
-                    <div className='edit_pensil_div' style={{width: '20px', height: '20px'}} 
+                    <div className='edit_pensil_div' style={{width: '20px', height: '20px',}} 
                       onClick={() => 
                       setEditModes((prev) => ({ ...prev, [card._id]: true}))}
                     >

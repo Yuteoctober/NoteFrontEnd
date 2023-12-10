@@ -5,7 +5,6 @@
   width: 100%;
   min-height: 700px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
 }
 
 
@@ -29,8 +28,10 @@
   grid-area: left_row;
   width: 200px;
   height: 100%;
-  background: #cb97a0ef;
+  background: #212125f3;
+  backdrop-filter: blur(5px);
   transition: .6s;
+  z-index: 5000;
   
 }
 
@@ -43,6 +44,7 @@
   font-size: 28px;
   padding-left: 1.5rem;
   bottom: .5rem;
+  color: #fcf4f4;
 }
 
 .subject {
@@ -77,8 +79,7 @@
 }
 
 .btn_container div:hover {
-  background: #d6bcc0ef;
-  color: white;
+  background: #666565aa;
   
 }
 
@@ -88,6 +89,7 @@
   top: 2px;
   margin-right: 25px;
   font-size: 16px;
+  color: rgb(249, 243, 243);
   
 }
 
@@ -95,6 +97,7 @@
   position: relative;
   font-size: 14px;
   white-space: nowrap;
+  color: rgb(249, 243, 243);
 }
 
 
@@ -112,10 +115,11 @@
   width: 42px;
   height: 42px;
   margin-left: 1.2rem;
-  background: rgb(227, 173, 173);
-  top: 4px;
+  background: rgb(152, 152, 152);
+  left: -5px;
   transition: .6s;
-  box-shadow: 0px 0px 3px;
+  box-shadow: 0px 0px 10px;
+  border: 3px solid rgb(18, 18, 18);
   cursor: pointer;
 }
 
@@ -167,9 +171,11 @@
   height: 110px;
   bottom: 3.5rem;
   left: 1rem;
-  background: rgba(123, 68, 68, 0.4);
+  background: rgba(192, 192, 192, 0.4);
   backdrop-filter: blur(5px);
+  z-index: 1;
 }
+
 
 .select_avatar img {
   position: relative;
@@ -179,6 +185,7 @@
   border-radius: .5rem;
   left: .2rem;
   cursor: pointer;
+  z-index: 50;
 }
 .select_avatar img:hover {
   background-color: rgba(255, 255, 255, 0.443);
@@ -188,7 +195,7 @@
   grid-area: right_row;
   min-height: 535px;
   width: 100%;
-  background: rgb(236, 236, 236);
+  background: #eeececa1;
   overflow: auto;
 }
 
@@ -201,9 +208,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   overflow: hidden;
-  background-image: radial-gradient(#0000007b .04rem, #ffffff55 .08rem);
-  background-size: 50px 50px;
-  
+  background-image: radial-gradient(#0000005e .04rem, #ffffff55 .08rem);
+  background-size: 80px 80px;
+  z-index: 0;
 }
 
 .card {
@@ -218,7 +225,7 @@
   padding: 10px 15px;
   text-wrap: wrap;
   box-shadow: 2px 3px 3px rgb(147, 147, 147);
-  background: white;
+  background: rgb(244, 242, 242);
 }
 
 .card:active {
@@ -264,8 +271,8 @@
 
 .card p {
   font-size: 13px;
-  max-height: 83px;
-  padding-bottom: 5px;
+  max-height: 110px;
+  height: fit-content;
   overflow: auto;
   word-wrap: break-word;
 }
@@ -276,7 +283,6 @@
   width: 100%;
   min-width: 420px;
   height: 165px;
-  background: rgb(167, 120, 50);
   background-position: center;
   background-size:cover;
   background-repeat: none;
@@ -452,8 +458,8 @@
   }
   .profile {
     position: absolute;
-    top: -2.3rem;
-    right: 9.35rem;
+    top: -2.6rem;
+    left: -13px;
   }
   .profile_container button {
     left: .45rem;
@@ -475,8 +481,7 @@
     top: -.5rem;
   }
   .select_avatar {
-    left: 3.4rem;
-    z-index: 500;
+    left: 3.6rem;
   }
 }
 
