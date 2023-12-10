@@ -202,7 +202,7 @@
 .card_container {
   display: flex;
   position: relative;
-  min-height: 535px;
+  min-height: 1000px;
   min-width: 1000px;
   height: 100%;
   flex-wrap: wrap;
@@ -468,7 +468,7 @@
     top: -.5rem;
   }
   .select_avatar {
-    left: 3.6rem;
+    left: 3.5rem;
   }
 }
 
