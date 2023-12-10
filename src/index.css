@@ -271,8 +271,9 @@
 
 .card p {
   font-size: 13px;
-  max-height: 110px;
-  height: fit-content;
+  max-height: 93px;
+  padding-bottom: 13px;
+  white-space: normal;
   overflow: auto;
   word-wrap: break-word;
 }
