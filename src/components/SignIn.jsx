@@ -16,6 +16,7 @@ function Signin() {
     axios.post('https://notebackend-qr35.onrender.com/auth/login', { username, password }, {
     headers: {
       'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*",
     },
   })
 

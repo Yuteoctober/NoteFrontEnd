@@ -80,6 +80,7 @@ useEffect(() => {
     axios.put(`https://notebackend-qr35.onrender.com/card/saveCardPositions/${cardId}`,position, {
         headers: {
           'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*",
         },
       }
     )
@@ -93,6 +94,7 @@ useEffect(() => {
     axios.put(`https://notebackend-qr35.onrender.com/checklist/saveChecklistPositions/${checklistId}`, position, {
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
       },
     })
       .then(() => {
@@ -104,6 +106,7 @@ useEffect(() => {
     axios.put(`https://notebackend-qr35.onrender.com/checklist/isdone/${checklistId}`, { isDone, number }, {
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
       },
     })
       .then(() => {
@@ -157,6 +160,7 @@ useEffect(() => {
         axios.put(`https://notebackend-qr35.onrender.com/card/card-edit/${id}`, { value: newValue, field }, {
           headers: {
             'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
           },
         })
             .then(() => {
@@ -179,9 +183,10 @@ useEffect(() => {
             )
         );
   
-        axios.put(`http://localhost:8080/checklist/checklist-edit/${id}`, { value: newValue, field }, {
+        axios.put(`https://notebackend-qr35.onrender.com/checklist/checklist-edit/${id}`, { value: newValue, field }, {
           headers: {
             'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
           },
         })
              .then(() => {
@@ -197,7 +202,7 @@ useEffect(() => {
       const userId = window.localStorage.getItem('id')
 
       if (type === 'card') {
-        axios.delete(`http://localhost:8080/card/card-delete/${id}`)
+        axios.delete(`https://notebackend-qr35.onrender.com/card/card-delete/${id}`)
           .then(() => {
             getCard(setCardResult, userId);
           })
@@ -209,7 +214,7 @@ useEffect(() => {
       if (type === 'checklist') {
         const userId = window.localStorage.getItem('id')
 
-        axios.delete(`http://localhost:8080/checklist/checklist-delete/${id}`)
+        axios.delete(`https://notebackend-qr35.onrender.com/checklist/checklist-delete/${id}`)
           .then(() => {
             getCheckList(setCheckListResult, userId);
           })
@@ -222,9 +227,10 @@ useEffect(() => {
   function handlSelectAvatar(avatar) {
     const userId = window.localStorage.getItem('id');
 
-    axios.put(`http://localhost:8080/auth/avatar/${userId}`, { avatar }, {
+    axios.put(`https://notebackend-qr35.onrender.com/auth/avatar/${userId}`, { avatar }, {
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
       },
     })
         .then((result) => {

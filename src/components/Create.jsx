@@ -25,6 +25,7 @@ function Create() {
           axios.post('https://notebackend-qr35.onrender.com/card/create-card', updatedSubject, {
             headers: {
               'Content-Type': 'application/json',
+              "Access-Control-Allow-Origin": "*",
             },
           })
             alert('Card created');

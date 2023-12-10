@@ -1,8 +1,8 @@
 import './css/create.css'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios'
 import UseContext from '../Context'
-import { getCard, getCheckList } from '../api/api'
+import { getCheckList } from '../api/api'
 import './css/checkList.css'
 
 function CheckList() {
@@ -31,6 +31,7 @@ function CheckList() {
           axios.post('https://notebackend-qr35.onrender.com/checklist/create-checklist', checkList, {
             headers: {
               'Content-Type': 'application/json',
+              "Access-Control-Allow-Origin": "*",
             },
           });
             alert('Checklist created');
