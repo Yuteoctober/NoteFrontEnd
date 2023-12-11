@@ -23,7 +23,7 @@ import { BsFillPlusCircleFill,
 
 
 function Body() {
-  const [lock, setLock] = useState(false)
+  const [lock, setLock] = useState(null)
   const [deleteMode, setDeleteMode] = useState(false)
   const [avatarMode, setAvatarMode] = useState(false)
   const [editBtn, setEditBtn] = useState(false)
@@ -57,13 +57,18 @@ function Body() {
 /// new Date
   const currentDate = GetCurrentFormattedDate()
 
+
+    
+
 ///fetch card detail
-useEffect(() => {
-  const userId = window.localStorage.getItem('id')
-  getUser(userId, setGetUsername, setAvatar, setLock)
-  getCard(setCardResult, userId);
-  getCheckList(setCheckListResult, userId);
-}, []);
+  useEffect(() => {
+    const userId = window.localStorage.getItem('id')
+    if (!lock) setLock(true)
+    getUser(userId, setGetUsername, setAvatar, setLock)
+    getCard(setCardResult, userId);
+    getCheckList(setCheckListResult, userId);
+  },[]);
+
 
   function handleSignIn() {
     navigate('/auth/login')
@@ -283,10 +288,10 @@ useEffect(() => {
               </div>
               <div onClick={() => handleLock(lock)}>
                 <span className='btn_name_first'>
-                  {lock? (<BsFillLockFill />):(<BsUnlockFill />)}
+                  {lock?(<BsFillLockFill />):(<BsUnlockFill />)}
                   </span>
                 <span className='btn_name'>
-                  {lock ? 'Lock':'Unlock'}
+                  {lock? 'Lock':'Unlock'}
                 </span>
               </div>
               <div onClick={() => {setDeleteMode(!deleteMode); setEditBtn(false)}} >
