@@ -197,12 +197,13 @@
   width: 100%;
   background: #eeececa1;
   overflow: auto;
+  overscroll-behavior: none;
 }
 
 .card_container {
   display: flex;
   position: relative;
-  min-height: 1000px;
+  min-height: 750px;
   min-width: 1000px;
   height: 100%;
   flex-wrap: wrap;
