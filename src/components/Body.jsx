@@ -8,6 +8,7 @@ import axios from 'axios';
 import bg from '../assets/bg.jpg'
 import dog from '../assets/dog.png'
 import bt from '../assets/bt.png'
+import bt2 from '../assets/bt2.png'
 import monkey from '../assets/monkey.png'
 import rabbit from '../assets/rabbit.png'
 import cat from '../assets/cat.png'
@@ -313,6 +314,7 @@ function Body() {
                 <div className="select_avatar" onMouseLeave={() => setAvatarMode(false)}>
                   <img src={dog} alt="dog" onClick={() => {handlSelectAvatar(dog); setAvatarMode(false)}} />
                   <img src={bt} alt="bt" onClick={() => {handlSelectAvatar(bt); setAvatarMode(false)}} />
+                  <img src={bt2} alt="bt2" onClick={() => {handlSelectAvatar(bt2); setAvatarMode(false)}} />
                   <img src={cat} alt="cat" onClick={() => {handlSelectAvatar(cat); setAvatarMode(false)}} />
                   <img src={rabbit} alt="rabbit" onClick={() => {handlSelectAvatar(rabbit); setAvatarMode(false)}} />
                   <img src={monkey} alt="monkey" onClick={() => {handlSelectAvatar(monkey); setAvatarMode(false)}} />
