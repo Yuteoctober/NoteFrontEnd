@@ -25,9 +25,10 @@ export const getCheckList = (setCheckListResult, userId) => {
     });
 };
 
-export const getUser = (userId, setGetUsername, setAvatar) => {
+export const getUser = (userId, setGetUsername, setAvatar, setLock) => {
   axios.get(`https://notebackend-qr35.onrender.com/auth/username/${userId}`,)
     .then((result) => {
+        setLock(result.data.lock)
         setAvatar(result.data.avatar)
         setGetUsername(result.data.username.charAt(0).toUpperCase() + result.data.username.slice(1));
         return;

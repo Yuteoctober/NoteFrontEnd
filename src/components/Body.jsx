@@ -17,10 +17,13 @@ import { BsFillPlusCircleFill,
   BsFillPencilFill ,
   BsTrash3Fill,
   BsCalendar3Week,     
-  BsCheckLg } from "react-icons/bs";
+  BsCheckLg,
+  BsFillLockFill,
+  BsUnlockFill   } from "react-icons/bs";
 
 
 function Body() {
+  const [lock, setLock] = useState(false)
   const [deleteMode, setDeleteMode] = useState(false)
   const [avatarMode, setAvatarMode] = useState(false)
   const [editBtn, setEditBtn] = useState(false)
@@ -57,7 +60,7 @@ function Body() {
 ///fetch card detail
 useEffect(() => {
   const userId = window.localStorage.getItem('id')
-  getUser(userId, setGetUsername, setAvatar)
+  getUser(userId, setGetUsername, setAvatar, setLock)
   getCard(setCardResult, userId);
   getCheckList(setCheckListResult, userId);
 }, []);
@@ -238,7 +241,24 @@ useEffect(() => {
             console.log(result.data.avatar);
         })
         .catch(err => console.log(err));
-}
+    }
+
+    function handleLock(lock) {
+      const userId = window.localStorage.getItem('id');
+      const lockValue = !lock
+        console.log(lockValue)
+        axios.put(`https://notebackend-qr35.onrender.com/auth/lock/${userId}`, { lock: lockValue }, {
+        headers: {
+          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*",
+        }
+      })
+        .then(() => {
+      getUser(userId, setGetUsername, setAvatar, setLock);
+    })
+      .catch((err) => console.log(err));
+    }
+
 
   return (
     <motion.section className='container'>
@@ -260,6 +280,14 @@ useEffect(() => {
               <div onClick={() => {setEditBtn(!editBtn); setEditModes(false); setDeleteMode(false)}}>
                 <span className='btn_name_first'><BsFillPencilFill /></span>
                 <span className='btn_name'>Edit</span>
+              </div>
+              <div onClick={() => handleLock(lock)}>
+                <span className='btn_name_first'>
+                  {lock? (<BsFillLockFill />):(<BsUnlockFill />)}
+                  </span>
+                <span className='btn_name'>
+                  {lock ? 'Lock':'Unlock'}
+                </span>
               </div>
               <div onClick={() => {setDeleteMode(!deleteMode); setEditBtn(false)}} >
                 <span className='btn_name_first'><BsTrash3Fill/></span>
@@ -316,6 +344,7 @@ useEffect(() => {
           key={card._id}
           cancel='.edit_name, .edit_description, .delete_card, .edit_pensil_div, .card_description_'
           axis="both"
+          disabled={lock}
           handle={'.card'}
           grid={[0.1, 0.1]}
           scale={1}
@@ -389,6 +418,7 @@ useEffect(() => {
             key={checklist._id}
             cancel='.edit_checklist_div input, .edit_checklist_list, .edit_checklist, .delete_card, .checkbox_tick'
             axis="both"
+            disabled={lock}
             handle={'.checklist_card'}
             grid={[0.1, 0.1]}
             scale={1}
