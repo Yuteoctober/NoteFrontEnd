@@ -277,11 +277,11 @@ function Body() {
             <div className="btn_container">
               <div onClick={() => setCreateCardModel(true)} >
                 <span className='btn_name_first'><BsFillPlusCircleFill/></span>
-                <span className='btn_name'>Add card</span>
+                <span className='btn_name'>Create card</span>
               </div>
               <div onClick={() => setCheckListModel(true)}>
                 <span className='btn_name_first'><BsListCheck /></span>
-                <span className='btn_name'>Add list</span>
+                <span className='btn_name'>Create list</span>
               </div>
               <div onClick={() => {setEditBtn(!editBtn); setEditModes(false); setDeleteMode(false)}}>
                 <span className='btn_name_first'><BsFillPencilFill /></span>
@@ -464,17 +464,23 @@ function Body() {
               (
                 <>
                 <div className="edit_checklist_div">
-                  <input className='edit_checklist_list' type="text" maxLength='22' value={checklist.checklist1} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist1')}/>
-                  <input className='edit_checklist_list' type="text" maxLength='22' value={checklist.checklist2} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist2')}/>
-                  <input className='edit_checklist_list' type="text" maxLength='22' value={checklist.checklist3} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist3')}/>
-                  <input className='edit_checklist_list' type="text" maxLength='22' value={checklist.checklist4} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist4')}/>
-                  <input className='edit_checklist_list' type="text" maxLength='22' value={checklist.checklist5} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist5')}/>
+                  <input className='edit_checklist_list' type="text"  value={checklist.checklistName} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklistName')}/>
+                  <input className='edit_checklist_list' type="text" maxLength='30' value={checklist.checklist1} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist1')}/>
+                  <input className='edit_checklist_list' type="text" maxLength='30' value={checklist.checklist2} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist2')}/>
+                  <input className='edit_checklist_list' type="text" maxLength='30' value={checklist.checklist3} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist3')}/>
+                  <input className='edit_checklist_list' type="text" maxLength='30' value={checklist.checklist4} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist4')}/>
+                  <input className='edit_checklist_list' type="text" maxLength='30' value={checklist.checklist5} onChange={(e) => handleEditChecklist(e, checklist._id, 'checklist', 'checklist5')}/>
                 </div>
                 </>
               )
               :
               (
                 <>
+                {checklist.checklistName && (
+                 <div className="checklist_name">
+                    <p>{checklist.checklistName}</p>
+                  </div> 
+                )}      
                   {checklist.checklist1 && (
                 <div className="input_checklist_container" >
                 <span>
@@ -495,7 +501,9 @@ function Body() {
                     onClick={() => handleIsDone(checklist._id, checklist.done2,'2')}
                     onChange={() => {}}
                   />
-                  <span className={`checkbox_text ${checklist.done2 ? 'crossed' : ''}`}>
+                  <span className={`checkbox_text ${checklist.done2 ? 'crossed' : ''}`}
+                    style={{textOverflow: 'ellipsis'}}
+                  >
                     {checklist.checklist2}
                   </span>
                 </span>

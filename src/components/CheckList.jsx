@@ -10,6 +10,7 @@ function CheckList() {
     const { CheckListModel, setCheckListModel, setCheckListResult } = useContext(UseContext);
     const [color, setColor] = useState('')
     const [checkList, setCheckList] = useState({
+        checklistName: '',
         checklist1: '',
         checklist2: '',
         checklist3: '',
@@ -38,6 +39,7 @@ function CheckList() {
             setCheckListModel(false)
             setColor('')
             setCheckList({...checkList, 
+            checklistName: '',
             checklist1: '',
             checklist2: '',
             checklist3: '',
@@ -67,23 +69,29 @@ function CheckList() {
                   <div className="create_checklist_box">
                     <p>Check List:</p>
                     <span>
-                        #1:<input type="text" maxLength="24" className='input_checkbox' placeholder='your input here...'
+                        <input type="text" className='input_checkbox' placeholder='name of your checklist...'
+                        style={{marginLeft: '1.3rem'}}
+                        onChange={(e) => setCheckList({...checkList, checklistName: e.target.value})}
+                        />
+                    </span>
+                    <span>
+                        #1:<input type="text" maxLength="40" className='input_checkbox' placeholder='your input here...'
                         onChange={(e) => setCheckList({...checkList, checklist1: e.target.value})}
                         />
                     </span>
-                    <span>#2:<input type="text" maxLength="24" className='input_checkbox' placeholder='your input here...' 
+                    <span>#2:<input type="text" maxLength="40" className='input_checkbox' placeholder='your input here...' 
                         onChange={(e) => setCheckList({...checkList, checklist2: e.target.value})}
                         />
                     </span>
-                    <span>#3:<input type="text" maxLength="24" className='input_checkbox' placeholder='your input here...' 
+                    <span>#3:<input type="text" maxLength="40" className='input_checkbox' placeholder='your input here...' 
                         onChange={(e) => setCheckList({...checkList, checklist3: e.target.value})}
                         />
                     </span>
-                    <span>#4:<input type="text" maxLength="24" className='input_checkbox' placeholder='your input here...' 
+                    <span>#4:<input type="text" maxLength="40" className='input_checkbox' placeholder='your input here...' 
                         onChange={(e) => setCheckList({...checkList, checklist4: e.target.value})}
                         />
                     </span>
-                    <span>#5:<input type="text" maxLength="24" className='input_checkbox' placeholder='your input here...' 
+                    <span>#5:<input type="text" maxLength="40" className='input_checkbox' placeholder='your input here...' 
                         onChange={(e) => setCheckList({...checkList, checklist5: e.target.value})}
                         />
                     </span>

@@ -3,7 +3,7 @@ import axios from 'axios'
 import './css/signUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Signin() {
+function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
@@ -56,4 +56,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Signup;

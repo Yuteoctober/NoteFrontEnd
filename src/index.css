@@ -97,6 +97,7 @@
   position: relative;
   font-size: 14px;
   white-space: nowrap;
+  font-weight: 400;
   color: rgb(249, 243, 243);
 }
 
@@ -331,13 +332,28 @@
   position: absolute;
   width: 165px;
   height: fit-content;
-  min-height: 230px;
+  min-height: 220px;
   border-radius: .25rem;
   overflow: hidden;
   cursor: grab;
-  padding: 10px 15px; padding-bottom: 15px;
+  padding: 10px 15px; padding-bottom: 17px;
   box-shadow: 2px 3px 3px rgb(147, 147, 147);
   overflow: hidden;
+  background: rgb(247, 246, 246);
+}
+
+.checklist_name p {
+  position: relative;
+  font-size: 13.5px;
+  top: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  color: #302c2c;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .checklist_card span{
@@ -408,9 +424,10 @@
 .edit_checklist_div {
   display: flex;
   position: relative;
-  top: .7rem;
+  top: .2rem;
   flex-direction: column;
-  row-gap: .8rem;
+  row-gap: .64rem;
+  overflow: hidden;
 }
 
 .edit_checklist_div input {
