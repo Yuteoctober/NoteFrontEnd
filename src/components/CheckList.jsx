@@ -68,9 +68,8 @@ function CheckList() {
                   <h2>Create Checklist</h2>
                   <div className="create_checklist_box">
                     <p>Check List:</p>
-                    <span>
-                        <input type="text" className='input_checkbox' placeholder='name of your checklist...'
-                        style={{marginLeft: '1.3rem'}}
+                    <span style={{color: 'transparent'}}>#1:
+                        <input type="text" className='input_checkbox' placeholder='name...'
                         onChange={(e) => setCheckList({...checkList, checklistName: e.target.value})}
                         />
                     </span>

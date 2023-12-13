@@ -7,6 +7,7 @@
     background-color: rgba(0, 0, 0, 0.493);
     align-items: center;
     z-index: 6000;
+    
 }
 
 
@@ -50,8 +51,7 @@
     position: relative;
     margin: 0;
     font-size: 14px;
-    margin-left: 1.5rem;
-
+    margin-left: 1.7rem;
 }
 
 .input_checkbox {
