@@ -208,6 +208,7 @@
   min-width: 1000px;
   height: 100%;
   flex-wrap: wrap;
+  white-space: pre-wrap;
   justify-content: space-evenly;
   overflow: hidden;
   background-image: radial-gradient(#0000005e .04rem, #ffffff55 .08rem);
@@ -224,7 +225,7 @@
   border-radius: .25rem;
   overflow: hidden;
   cursor: grab;
-  padding: 10px 15px;
+  padding: 10px 15px; padding-bottom: 16px;
   text-wrap: wrap;
   box-shadow: 2px 3px 3px rgb(147, 147, 147);
   background: rgb(244, 242, 242);
@@ -234,6 +235,8 @@
   cursor: grabbing;
   z-index: 500;
 }
+
+
 
 .edit_card {
   position: absolute;
@@ -250,11 +253,13 @@
 }
 
 .card h1 {
+  width: fit-content;
   margin-top: 8px;
   max-height: 41px;
   font-size: 15px;
   margin-bottom: -5px;
   overflow: hidden;
+  white-space: wrap;
   word-wrap: break-word;
 }
 
@@ -267,7 +272,6 @@
 .edit_description {
   margin-top: .5rem;
   width: 95%;
-  height: 60%;
   resize: none;
 }
 
@@ -275,9 +279,9 @@
   font-size: 13px;
   max-height: 93px;
   padding-bottom: 13px;
-  white-space: normal;
   overflow: auto;
   word-wrap: break-word;
+  
 }
 
 .top_right_row {

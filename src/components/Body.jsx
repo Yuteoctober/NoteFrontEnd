@@ -404,16 +404,23 @@ function Body() {
                 </motion.div>
               )}
               {editModes[card._id]?(
-                <>
-                  <input className='edit_name' type="text" onChange={(e) => handleEditCard(e, card._id, 'card', 'name')} value={card.name} />
-                  <textarea className='edit_description' value={card.description} onChange={(e) => handleEditCard(e, card._id, 'card', 'description')} cols="30" rows="10"></textarea>
-                </>
+                <div style={{ whiteSpace: 'normal', }}>
+                  <input className='edit_name' type="text" 
+                    onChange={(e) => handleEditCard(e, card._id, 'card', 'name')} 
+                    value={card.name} />
+                  <textarea className='edit_description' value={card.description} 
+                    onChange={(e) => handleEditCard(e, card._id, 'card', 'description')} 
+                    cols="30" rows="7">
+                  </textarea>
+                </div>
                 )
                 :
                 (
                 <>
                   <h1>{card.name}</h1>
-                  <p className='card_description_'>{card.description}</p>
+                    <p className='card_description_'>
+                      {card.description}
+                    </p>
                 </>
               )}
               
