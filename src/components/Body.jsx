@@ -12,6 +12,7 @@ import bt2 from '../assets/bt2.png'
 import monkey from '../assets/monkey.png'
 import rabbit from '../assets/rabbit.png'
 import cat from '../assets/cat.png'
+import notes from '../assets/notes.png'
 import { DateOnCard, GetCurrentFormattedDate, Greeting } from '../api/functions'
 import { BsFillPlusCircleFill, 
   BsListCheck,
@@ -272,6 +273,7 @@ function Body() {
         className='left_row'
         transition={{ duration: .8, ease: 'easeInOut' }}>
         <div className="logo">
+          <img src={notes}/>
           <h2>Notes</h2>
             <div className="subject"></div>
             <div className="btn_container">
