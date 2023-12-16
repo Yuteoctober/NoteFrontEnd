@@ -273,7 +273,7 @@ function Body() {
         className='left_row'
         transition={{ duration: .8, ease: 'easeInOut' }}>
         <div className="logo">
-          <img src={notes}/>
+          <img src={notes} className='notes_img' />
           <h2>Notes</h2>
             <div className="subject"></div>
             <div className="btn_container">

@@ -51,7 +51,7 @@
   color: #fcf4f4;
   transition: .7s;
 }
-.logo img {
+.logo .notes_img {
   position: relative;
   width: 150px;
   top: 1.5rem;
@@ -179,8 +179,8 @@
   flex-wrap: wrap;
   padding: 5px;
   border-radius: .5rem;
-  column-gap: .5rem;
-  row-gap: 5px;
+  column-gap: .7rem;
+  row-gap: .5rem;
   width: 170px;
   height: 110px;
   bottom: 3.5rem;
@@ -192,7 +192,6 @@
 
 
 .select_avatar img {
-  position: relative;
   width: 45px;
   height: 45px;
   padding: 2px;
@@ -470,7 +469,7 @@
     text-align: center;
   }
 
-  .logo img {
+  .logo .notes_img {
     display: none;
   }
   .btn_container div {
