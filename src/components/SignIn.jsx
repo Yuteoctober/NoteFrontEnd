@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios'
 import './css/signIn.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -31,6 +31,21 @@ function Signin() {
     })
     .catch(err => console.log(err))
   }
+
+  function handleOnchange(e) {
+    const { name, value } = e.target;
+
+    if (name === 'username') {
+      setUsername(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  }
+
+  useEffect(() => {
+    setUsername('test')
+    setPassword('1234')
+  },[])
   return (
     <>
       <div className="login_container">
@@ -40,14 +55,18 @@ function Signin() {
             <p>Stay up to date with your daily schedule</p>
             <input
                 type="text"
+                name="username"
                 placeholder="Username"
-                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                onChange={(e) => handleOnchange(e)}
             />
             <br />
             <input
                 type="password"
+                name="password"
                 placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                onChange={(e) => handleOnchange(e)}
             />
             <button type="submit">Sign in</button>
             <p>
