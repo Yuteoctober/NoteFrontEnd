@@ -368,6 +368,10 @@ function Body() {
               key={card._id}
               className="card"
               style={{ backgroundColor: card.color }}
+              initial={{ opacity: 0}}
+              animate={{ opacity: 1}}
+              transition={{ duration: .5, ease: 'easeInOut'}}
+              exit={{ duration: .5, ease: 'easeInOut'}}
             >
               <span>
                 <DateOnCard date={card.created} />
@@ -445,7 +449,15 @@ function Body() {
             bounds='.card_container'
             onStop={(event, data) => handleDragStopChecklist(checklist._id, event, data)}
             >
-            <motion.div key={checklist._id} className="checklist_card" style={{ backgroundColor: checklist.color}}>
+            <motion.div  
+              className="checklist_card" 
+              key={checklist._id} 
+              style={{ backgroundColor: checklist.color}}
+              initial={{ opacity: 0}}
+              animate={{ opacity: 1}}
+              transition={{ duration: .5, ease: 'easeInOut'}}
+              exit={{ duration: .5, ease: 'easeInOut'}}
+              >
               <span><DateOnCard date={checklist.created} /></span>
               {deleteMode && (
                 <BsTrash3Fill className='delete_card' style={{ position: 'absolute', right: '.8rem', top: '8px', cursor: 'pointer'}} 
