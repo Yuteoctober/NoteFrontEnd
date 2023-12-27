@@ -78,7 +78,7 @@
   margin-top: 7rem;
 }
 
-.btn_container div {
+.btn_container button {
   position: relative;
   margin: 0 auto;
   width: 80%;
@@ -88,10 +88,12 @@
   font-weight: 600;
   white-space: nowrap;
   color: #151313;
-  
+  background: none;
+  border: none;
+  text-align: left;
 }
 
-.btn_container div:hover {
+.btn_container button:hover {
   background: #666565aa;
   
 }
@@ -248,7 +250,51 @@
   z-index: 500;
 }
 
+.color_edit {
+  position: absolute;
+  width: 14px;
+  height: 13px;
+  border: 3px solid rgb(65, 65, 65);
+  right: .6rem;
+  top: .85rem;
+  background: rgb(255, 255, 255);
+  border-radius: 2px;
+  cursor: pointer;
+}
 
+
+.color_edit:hover, .color_edit:active {
+  border-color: rgb(147, 147, 147);
+}
+
+.color_edit_picker {
+  display: flex;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  right: .5rem;
+  top: 2.2rem;
+  gap: 1rem;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: .3rem;
+  padding: 8px 5px;
+  backdrop-filter: blur(5px);
+  background: rgba(211, 211, 211, 0.571);
+  z-index: 500;
+}
+.color_edit_selection {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(65, 65, 65);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.color_edit_selection:hover, .color_edit_selection:active {
+  border-color: rgb(230, 230, 230);
+}
 
 .edit_card {
   position: absolute;
@@ -257,7 +303,6 @@
   font-size: 14px;
   cursor: pointer;
 }
-
 
 
 .card span {
@@ -472,7 +517,7 @@
   .logo .notes_img {
     display: none;
   }
-  .btn_container div {
+  .btn_container button {
     padding: 5px;
     width: fit-content;
   }

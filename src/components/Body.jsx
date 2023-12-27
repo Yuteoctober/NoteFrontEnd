@@ -21,10 +21,13 @@ import { BsFillPlusCircleFill,
   BsCalendar3Week,     
   BsCheckLg,
   BsFillLockFill,
-  BsUnlockFill   } from "react-icons/bs";
+  BsUnlockFill } from "react-icons/bs";
+
+import { FaPaintBrush } from "react-icons/fa";
 
 
 function Body() {
+  const [colorBtn, setColorBtn] = useState(false)
   const [lock, setLock] = useState(null)
   const [deleteMode, setDeleteMode] = useState(false)
   const [avatarMode, setAvatarMode] = useState(false)
@@ -46,6 +49,7 @@ function Body() {
     });
     return initialState;
   });
+
   const [editModesChecklist, setEditModesChecklist] = useState(() => {
     const initialState = {};
     checkListResult.forEach((checklist) => {
@@ -54,13 +58,25 @@ function Body() {
     return initialState;
   });
 
+  const [colorMode, setColorMode] = useState(() => {
+    const initialState = {};
+  
+    checkListResult.forEach((checklist) => {
+      initialState[checklist._id] = false;
+    });
+  
+    cardResult.forEach((card) => {
+      initialState[card._id] = false;
+    });
+  
+    return initialState;
+  });
+
+
 
 
 /// new Date
   const currentDate = GetCurrentFormattedDate()
-
-
-    
 
 ///fetch card detail
   useEffect(() => {
@@ -266,6 +282,42 @@ function Body() {
       .catch((err) => console.log(err));
     }
 
+    function handleColorChange(type, id, color) {
+      console.log('Handling color change:', type, id, color);
+      const userId = window.localStorage.getItem('id');
+    
+      if (type === 'card') {
+        setColorMode(prev => ({ ...prev, [id]: !prev[id] }));
+        axios.put(`https://notebackend-qr35.onrender.com/card/card-color-change/${id}`, { color }, {
+          headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
+          .then(() => {
+            getCard(setCardResult, userId);
+          })
+          .catch((error) => {
+            console.error('Error changing card color:', error);
+          });
+      } 
+      if (type === 'checklist') {
+        setColorMode(prev => ({ ...prev, [id]: !prev[id] }));
+        axios.put(`https://notebackend-qr35.onrender.com/checklist/checklist-color-change/${id}`, { color }, {
+          headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
+          .then(() => {
+            getCheckList(setCheckListResult, userId);
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+
+    
+
 
   return (
     <motion.section className='container'>
@@ -277,30 +329,34 @@ function Body() {
           <h2>Notes</h2>
             <div className="subject"></div>
             <div className="btn_container">
-              <div onClick={() => setCreateCardModel(true)} >
+              <button onClick={() => setCreateCardModel(true)} >
                 <span className='btn_name_first'><BsFillPlusCircleFill/></span>
                 <span className='btn_name'>Create card</span>
-              </div>
-              <div onClick={() => setCheckListModel(true)}>
+              </button>
+              <button onClick={() => setCheckListModel(true)}>
                 <span className='btn_name_first'><BsListCheck /></span>
                 <span className='btn_name'>Create list</span>
-              </div>
-              <div onClick={() => {setEditBtn(!editBtn); setEditModes(false); setDeleteMode(false)}}>
+              </button>
+              <button onClick={() => {setEditBtn(!editBtn); setEditModes(false); setDeleteMode(false); setColorBtn(false)}}>
                 <span className='btn_name_first'><BsFillPencilFill /></span>
-                <span className='btn_name'>Edit</span>
-              </div>
-              <div onClick={() => handleLock(lock)}>
+                <span className='btn_name'>Edit text</span>
+              </button>
+              <button onClick={() => {setColorBtn(!colorBtn); setEditBtn(false); setDeleteMode(false); setColorMode(false)}} >
+                <span className='btn_name_first'><FaPaintBrush  /></span>
+                <span className='btn_name'>Change color</span>
+              </button>
+              <button onClick={() => handleLock(lock)}>
                 <span className='btn_name_first'>
                   {lock?(<BsFillLockFill />):(<BsUnlockFill />)}
                   </span>
                 <span className='btn_name'>
                   {lock? 'Lock':'Unlock'}
                 </span>
-              </div>
-              <div onClick={() => {setDeleteMode(!deleteMode); setEditBtn(false)}} >
+              </button>
+              <button onClick={() => {setDeleteMode(!deleteMode); setEditBtn(false); setColorBtn(false)}} >
                 <span className='btn_name_first'><BsTrash3Fill/></span>
                 <span className='btn_name'>Trash</span>
-              </div>
+              </button>
             </div>
             <div className="profile_container">
               <div className="profile">
@@ -376,7 +432,35 @@ function Body() {
               <span>
                 <DateOnCard date={card.created} />
               </span>
-
+              {colorBtn && (
+                <div className='color_edit'
+                  onClick={() => setColorMode((prev) => ({ ...prev, [card._id]: !prev[card._id] }))}
+                >
+                </div>
+              )}
+              {(colorMode[card._id] && colorBtn) && (
+              <div className="color_edit_picker">
+                <div className="color_edit_selection" style={{ background: '#eff0ee'}}
+                  onClick={() => {handleColorChange('card', card._id, '#eff0ee')}}>
+                </div>
+                <div className="color_edit_selection" style={{ background: '#cded9e'}} 
+                  onClick={() => {handleColorChange('card', card._id, '#cded9e')}}>
+                </div>
+                <div className="color_edit_selection" style={{ background: '#e69191'}} 
+                  onClick={() => {handleColorChange('card', card._id, '#e69191')}}>
+                </div>
+                <div className="color_edit_selection" style={{ background: '#9bc8ec'}} 
+                  onClick={() => {handleColorChange('card', card._id, '#9bc8ec')}}>
+                  </div>
+                <div className="color_edit_selection" style={{ background: '#c29cf2'}} 
+                  onClick={() => {handleColorChange('card', card._id, '#c29cf2')}}>
+                  </div>
+                <div className="color_edit_selection" style={{ background: '#f2f285'}} 
+                  onClick={() => {handleColorChange('card', card._id, '#f2f285')}}> 
+                </div>
+              </div>
+              )}
+              
               {deleteMode && (
                 <BsTrash3Fill className='delete_card' style={{ position: 'relative', right: '-5.1rem', top: '3px', cursor: 'pointer'}} 
                   onClick={() => handleDelete(card._id, 'card')}
@@ -459,6 +543,35 @@ function Body() {
               exit={{ duration: .5, ease: 'easeInOut'}}
               >
               <span><DateOnCard date={checklist.created} /></span>
+              {colorBtn && (
+                <div className='color_edit'
+                  onClick={() => setColorMode((prev) => ({ ...prev, [checklist._id]: !prev[checklist._id] }))}
+                  >
+                </div>
+              )}
+              {(colorMode[checklist._id] && colorBtn) && (
+              <div className="color_edit_picker">
+                <div className="color_edit_selection" style={{ background: '#eff0ee'}}
+                  onClick={() => {handleColorChange('checklist', checklist._id, '#eff0ee')}}>
+                </div>
+                <div className="color_edit_selection" style={{ background: '#cded9e'}} 
+                  onClick={() => {handleColorChange('checklist', checklist._id, '#cded9e')}}>
+                </div>
+                <div className="color_edit_selection" style={{ background: '#e69191'}} 
+                  onClick={() => {handleColorChange('checklist', checklist._id, '#e69191')}}>
+                </div>
+                <div className="color_edit_selection" style={{ background: '#9bc8ec'}} 
+                  onClick={() => {handleColorChange('checklist', checklist._id, '#9bc8ec')}}>
+                  </div>
+                <div className="color_edit_selection" style={{ background: '#c29cf2'}} 
+                  onClick={() => {handleColorChange('checklist', checklist._id, '#c29cf2')}}>
+                  </div>
+                <div className="color_edit_selection" style={{ background: '#f2f285'}} 
+                  onClick={() => {handleColorChange('checklist', checklist._id, '#f2f285')}}> 
+                </div>
+              </div>
+              )}
+              
               {deleteMode && (
                 <BsTrash3Fill className='delete_card' style={{ position: 'absolute', right: '.8rem', top: '8px', cursor: 'pointer'}} 
                 onClick={() => handleDelete(checklist._id, 'checklist')}
