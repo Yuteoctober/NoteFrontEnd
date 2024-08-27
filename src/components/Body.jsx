@@ -94,7 +94,7 @@ function Body() {
 
   function handleLogout() {
     window.localStorage.clear()
-    axios.get('https://notebackend-qr35.onrender.com/auth/logout')
+    axios.get('https://notebackend2.onrender.com/auth/logout')
     .then(() => {
       alert('logout sucessfully')
       navigate('/auth/login')
@@ -103,7 +103,7 @@ function Body() {
   }
 
   const saveCardPositions = (cardId, position) => {
-    axios.put(`https://notebackend-qr35.onrender.com/card/saveCardPositions/${cardId}`,position, {
+    axios.put(`https://notebackend2.onrender.com/card/saveCardPositions/${cardId}`,position, {
         headers: {
           'Content-Type': 'application/json',
           "Access-Control-Allow-Origin": "*",
@@ -117,7 +117,7 @@ function Body() {
   };
 
   const saveCheckListPositions = (checklistId, position) => {
-    axios.put(`https://notebackend-qr35.onrender.com/checklist/saveChecklistPositions/${checklistId}`, position, {
+    axios.put(`https://notebackend2.onrender.com/checklist/saveChecklistPositions/${checklistId}`, position, {
       headers: {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
@@ -129,7 +129,7 @@ function Body() {
   };
 
   const saveIsDone = (checklistId, isDone, number) => {
-    axios.put(`https://notebackend-qr35.onrender.com/checklist/isdone/${checklistId}`, { isDone, number }, {
+    axios.put(`https://notebackend2.onrender.com/checklist/isdone/${checklistId}`, { isDone, number }, {
       headers: {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
@@ -183,7 +183,7 @@ function Body() {
         );
         console.log(newValue, field);
 
-        axios.put(`https://notebackend-qr35.onrender.com/card/card-edit/${id}`, { value: newValue, field }, {
+        axios.put(`https://notebackend2.onrender.com/card/card-edit/${id}`, { value: newValue, field }, {
           headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*",
@@ -209,7 +209,7 @@ function Body() {
             )
         );
   
-        axios.put(`https://notebackend-qr35.onrender.com/checklist/checklist-edit/${id}`, { value: newValue, field }, {
+        axios.put(`https://notebackend2.onrender.com/checklist/checklist-edit/${id}`, { value: newValue, field }, {
           headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*",
@@ -228,7 +228,7 @@ function Body() {
       const userId = window.localStorage.getItem('id')
 
       if (type === 'card') {
-        axios.delete(`https://notebackend-qr35.onrender.com/card/card-delete/${id}`)
+        axios.delete(`https://notebackend2.onrender.com/card/card-delete/${id}`)
           .then(() => {
             getCard(setCardResult, userId);
           })
@@ -240,7 +240,7 @@ function Body() {
       if (type === 'checklist') {
         const userId = window.localStorage.getItem('id')
 
-        axios.delete(`https://notebackend-qr35.onrender.com/checklist/checklist-delete/${id}`)
+        axios.delete(`https://notebackend2.onrender.com/checklist/checklist-delete/${id}`)
           .then(() => {
             getCheckList(setCheckListResult, userId);
           })
@@ -253,7 +253,7 @@ function Body() {
   function handlSelectAvatar(avatar) {
     const userId = window.localStorage.getItem('id');
 
-    axios.put(`https://notebackend-qr35.onrender.com/auth/avatar/${userId}`, { avatar }, {
+    axios.put(`https://notebackend2.onrender.com/auth/avatar/${userId}`, { avatar }, {
       headers: {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
@@ -270,7 +270,7 @@ function Body() {
       const userId = window.localStorage.getItem('id');
       const lockValue = !lock
         console.log(lockValue)
-        axios.put(`https://notebackend-qr35.onrender.com/auth/lock/${userId}`, { lock: lockValue }, {
+        axios.put(`https://notebackend2.onrender.com/auth/lock/${userId}`, { lock: lockValue }, {
         headers: {
           'Content-Type': 'application/json',
           "Access-Control-Allow-Origin": "*",
@@ -288,7 +288,7 @@ function Body() {
     
       if (type === 'card') {
         setColorMode(prev => ({ ...prev, [id]: !prev[id] }));
-        axios.put(`https://notebackend-qr35.onrender.com/card/card-color-change/${id}`, { color }, {
+        axios.put(`https://notebackend2.onrender.com/card/card-color-change/${id}`, { color }, {
           headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*",
@@ -303,7 +303,7 @@ function Body() {
       } 
       if (type === 'checklist') {
         setColorMode(prev => ({ ...prev, [id]: !prev[id] }));
-        axios.put(`https://notebackend-qr35.onrender.com/checklist/checklist-color-change/${id}`, { color }, {
+        axios.put(`https://notebackend2.onrender.com/checklist/checklist-color-change/${id}`, { color }, {
           headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*",

@@ -4,7 +4,7 @@ import axios from "axios";
 ///get cards info to fetch and to rerender purpose
 
 export const getCard = (setCardResult, userId) => {
-    axios.get(`https://notebackend-qr35.onrender.com/card/cards/${userId}`)
+    axios.get(`https://notebackend2.onrender.com/card/cards/${userId}`)
     .then((result) => {
       setCardResult(result.data);
       return result.data;
@@ -15,7 +15,7 @@ export const getCard = (setCardResult, userId) => {
 };
 
 export const getCheckList = (setCheckListResult, userId) => {
-    axios.get(`https://notebackend-qr35.onrender.com/checklist/checklists/${userId}`)
+    axios.get(`https://notebackend2.onrender.com/checklist/checklists/${userId}`)
     .then((result) => {
       setCheckListResult(result.data);
       return result.data;
@@ -26,7 +26,7 @@ export const getCheckList = (setCheckListResult, userId) => {
 };
 
 export const getUser = (userId, setGetUsername, setAvatar, setLock) => {
-  axios.get(`https://notebackend-qr35.onrender.com/auth/username/${userId}`,)
+  axios.get(`https://notebackend2.onrender.com/auth/username/${userId}`,)
     .then((result) => {
         setLock(result.data.lock)
         setAvatar(result.data.avatar)
