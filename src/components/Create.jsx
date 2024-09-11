@@ -22,7 +22,7 @@ function Create() {
       
         try {
           const updatedSubject = { ...subject, color: color }; 
-          axios.post('https://notebackend-qr35.onrender.com/card/create-card', updatedSubject, {
+          axios.post('https://notebackend4.onrender.com/card/create-card', updatedSubject, {
             headers: {
               'Content-Type': 'application/json',
               "Access-Control-Allow-Origin": "*",

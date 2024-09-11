@@ -12,7 +12,7 @@ function Signup() {
     e.preventDefault();
     console.log(`Username: ${username} Password: ${password}`);
   
-    axios.post('https://notebackend-qr35.onrender.com/auth/register', {username, password }, {
+    axios.post('https://notebackend4.onrender.com/auth/register', {username, password }, {
       headers: {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
